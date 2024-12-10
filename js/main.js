@@ -35,3 +35,19 @@ const kittenThree = `<li class="card">
 </p>
 </li>`;
 kittenList.innerHTML = kittenOne + kittenTwo + kittenThree;
+
+const buttonAdd = document.querySelector('.js-btn-add');
+const addKitten = document.querySelector('.js-new-form');
+const buttonCancel = document.querySelector('.js-button-cancel');
+const inputReset = document.querySelector('.js-form-input');
+
+buttonAdd.addEventListener('click', () => {addKitten.classList.toggle('collapsed');
+
+});
+
+buttonCancel.addEventListener('click', () => {addKitten.classList.add('collapsed');
+    inputReset.reset();
+});
+
+
+
