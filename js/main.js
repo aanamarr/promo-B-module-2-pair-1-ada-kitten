@@ -50,4 +50,7 @@ buttonCancel.addEventListener('click', () => {addKitten.classList.add('collapsed
 });
 
 
+const nombreVariable = 3
+
+
 
