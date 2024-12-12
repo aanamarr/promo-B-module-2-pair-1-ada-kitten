@@ -1,6 +1,26 @@
 'use strict'
 const kittenList = document.querySelector('.js-list');
-const kittenOne = `<li class="card">
+
+const kittenImg1 = './img/gato-siames.webp';
+const kittenName1 = 'Anastasio';
+const kittenDesc1 = 
+'Porte elegante, su patrón de color tan característico y sus ojos de un azul intenso, pero su historia se remonta a Asía al menos hace 500 años, donde tuvo su origen muy posiblemente.';
+const kittenRace1 = 'Siamés';
+
+
+const kittenImg2 = 'sphynx-gato.webp';
+const kittenName2 = 'Fiona';
+const kittenDesc2 = 
+'Produce fascinación y curiosidad. Exótico, raro, bello, extraño… hasta con pinta de alienígena han llegado a definir a esta raza gatuna que se caracteriza por la «ausencia» de pelo.';
+const kittenRace2 = 'Sphynx';
+
+const kittenImg3 = 'maine-coon-cat.webp';
+const kittenName3 = 'Cielo';
+const kittenDesc3 = 
+'Tienen la cabeza cuadrada y los ojos simétricos, por lo que su bella mirada se ha convertido en una de sus señas de identidad. Sus ojos son grandes y las orejas resultan largas y en punta.';
+const kittenRace3 = 'null';
+
+/*const kittenOne = `<li class="card">
 <article>
     <img class="card_img" src="https://dev.adalab.es/gato-siames.webp" alt="siames-cat" />
     <h3 class="card_title">Anastacio</h3>
@@ -34,7 +54,7 @@ const kittenThree = `<li class="card">
     Sus ojos son grandes y las orejas resultan largas y en punta.
 </p>
 </li>`;
-kittenList.innerHTML = kittenOne + kittenTwo + kittenThree;
+kittenList.innerHTML = kittenOne + kittenTwo + kittenThree;*/
 
 const buttonAdd = document.querySelector('.js-btn-add');
 const addKitten = document.querySelector('.js-new-form');
@@ -42,10 +62,18 @@ const buttonCancel = document.querySelector('.js-button-cancel');
 const inputReset = document.querySelector('.js-form-input');
 const searchButton = document.querySelector('.js_button-search');
 const inputSearchDesc = document.querySelector('.js_in_search_desc');
-const KittenDesc1 = 'Porte elegante, su patrón de color tan característico y sus ojos de un azul intenso, pero su historia se remonta a Asía al menos hace 500 años, donde tuvo su origen muy posiblemente';
-const kittenDesc2 = 'Produce fascinación y curiosidad. Exótico, raro, bello, extraña hasta con pinta de alienígena han llegado a definir a esta raza gatuna que se caracteriza por la «ausencia» de pelo.';
-const kittenDesc3 = 'Tienen la cabeza cuadrada y los ojos simétricos, por lo que su bella mirada se ha convertido en una de sus señas de identidad. Sus ojos son grandes y las orejas resultan largas y en punta.';
-const selectedKitten = document.querySelector('.js-list');
+const msg = 'Uy no encontramos un gato con estas caracterísitcas'
+
+/*const kittenDesc1 = 
+'Porte elegante, su patrón de color tan característico y sus ojos de un azul intenso, pero su historia se remonta a Asía al menos hace 500 años, donde tuvo su origen muy posiblemente.';
+
+const kittenDesc2 = 
+'Produce fascinación y curiosidad. Exótico, raro, bello, extraña hasta con pinta de alienígena han llegado a definir a esta raza gatuna que se caracteriza por la «ausencia» de pelo.';
+
+const kittenDesc3 = 
+'Tienen la cabeza cuadrada y los ojos simétricos, por lo que su bella mirada se ha convertido en una de sus señas de identidad. Sus ojos son grandes y las orejas resultan largas y en punta.';*/
+
+//const selectedKitten = document.querySelector('.js-list');
 
 buttonAdd.addEventListener('click', () => {addKitten.classList.toggle('collapsed');
 
@@ -55,19 +83,45 @@ buttonCancel.addEventListener('click', () => {addKitten.classList.add('collapsed
     inputReset.reset();
 });
 
+kittenList.innerHTML = `<li>
+<img scr="./img/${kittenImg1}"  alt="" />            
+<h3>${kittenName1}</h3>
+<h4>${kittenRace1}</h4>
+<p>${kittenDesc1}</p>
+</li>`;
+
+kittenList.innerHTML += `<li>
+<img scr="./img/${kittenImg2}"  alt="" />            
+<h3>${kittenName2}</h3>
+<h4>${kittenRace2}</h4>
+<p>${kittenDesc2}</p>
+</li>`;
+
+kittenList.innerHTML += `<li>
+<img scr="./img/${kittenImg3}"  alt="" />            
+<h3>${kittenName3}</h3>
+<h4>${kittenRace3}</h4>
+<p>${kittenDesc3}</p>
+</li>`;
+
+
 searchButton.addEventListener("click", (ev) => {
     ev.preventDefault();
     const descrSearchText = inputSearchDesc.value;
 
     if (kittenDesc1.includes(descrSearchText)) {
-        console.log(kittenOne);
+        kittenList.innerHTML = `<li>${kittenOne} </li>`;
+
       }
       
-      if (kittenDesc2.includes(descrSearchText)) {
-        //Completa el código
+    else if (kittenDesc2.includes(descrSearchText)) {
+        kittenList.innerHTML = `<li>${kittenTwo} </li>`;
       }
       
-      if (kittenDesc3.includes(descrSearchText)) {
-        //Completa el código
+    else if (kittenDesc3.includes(descrSearchText)) {
+        kittenList.innerHTML = `<li>${kittenThree} </li>`;
       }
+    else {
+        kittenList.innerHTML = msg;
+    }
   });
