@@ -1,7 +1,7 @@
 'use strict'
 const kittenList = document.querySelector('.js-list');
 
-const kittenImg1 = './img/gato-siames.webp';
+const kittenImg1 = 'gato-siames.webp';
 const kittenName1 = 'Anastasio';
 const kittenDesc1 = 
 'Porte elegante, su patrón de color tan característico y sus ojos de un azul intenso, pero su historia se remonta a Asía al menos hace 500 años, donde tuvo su origen muy posiblemente.';
@@ -18,43 +18,31 @@ const kittenImg3 = 'maine-coon-cat.webp';
 const kittenName3 = 'Cielo';
 const kittenDesc3 = 
 'Tienen la cabeza cuadrada y los ojos simétricos, por lo que su bella mirada se ha convertido en una de sus señas de identidad. Sus ojos son grandes y las orejas resultan largas y en punta.';
-const kittenRace3 = 'null';
+const kittenRace3 = '';
 
-/*const kittenOne = `<li class="card">
+const kittenOne = `<li class="card">
 <article>
-    <img class="card_img" src="https://dev.adalab.es/gato-siames.webp" alt="siames-cat" />
-    <h3 class="card_title">Anastacio</h3>
-    <h4 class="card_race">Siamés</h4>
-    <p class="card_description">
-        Porte elegante, su patrón de color tan característico y sus ojos
-        de un azul intenso, pero su historia se remonta a Asía al menos
-        hace 500 años, donde tuvo su origen muy posiblemente.
-    </p>
+    <img class="card_img" src="./img/${kittenImg1}" alt="siames-cat" />
+    <h3 class="card_title">${kittenName1}</h3>
+    <h4 class="card_race">${kittenRace1}</h4>
+    <p class="card_description">${kittenDesc1}</p>
 </article>
 </li>`;
 
  const kittenTwo = `<li class="card">
- <img class="card_img" src="https://dev.adalab.es/sphynx-gato.webp" alt="sphynx-cat" />
- <h3 class="card_title">Fiona</h3>
- <h4 class="card_race">Sphynx</h4>
- <p class="card_description">
-     Produce fascinación y curiosidad. Exótico, raro, bello, extraño…
-     hasta con pinta de alienígena han llegado a definir a esta raza
-     gatuna que se caracteriza por la «ausencia» de pelo.
- </p>
+ <img class="card_img" src="./img/${kittenImg2}" alt="sphynx-cat" />
+ <h3 class="card_title">${kittenName2}</h3>
+ <h4 class="card_race">${kittenRace2}</h4>
+ <p class="card_description">${kittenDesc2}</p>
 </li>`;
 
 const kittenThree = `<li class="card">
-<img class="card_img" src="https://dev.adalab.es/maine-coon-cat.webp" alt="maine-coon-cat" />
-<h3 class="card_title">Cielo</h3>
-<h4 class="card_race">Maine Coon</h4>
-<p class="card_description">
-    Tienen la cabeza cuadrada y los ojos simétricos, por lo que su
-    bella mirada se ha convertido en una de sus señas de identidad.
-    Sus ojos son grandes y las orejas resultan largas y en punta.
-</p>
+<img class="card_img" src="./img/${kittenImg3}" alt="maine-coon-cat" />
+<h3 class="card_title">${kittenName3}</h3>
+<h4 class="card_race">${kittenRace3}</h4>
+<p class="card_description">${kittenDesc3}</p>
 </li>`;
-kittenList.innerHTML = kittenOne + kittenTwo + kittenThree;*/
+kittenList.innerHTML = kittenOne + kittenTwo + kittenThree;
 
 const buttonAdd = document.querySelector('.js-btn-add');
 const addKitten = document.querySelector('.js-new-form');
@@ -75,34 +63,24 @@ const kittenDesc3 =
 
 //const selectedKitten = document.querySelector('.js-list');
 
-buttonAdd.addEventListener('click', () => {addKitten.classList.toggle('collapsed');
+function showNewCatForm() {
+    addKitten.classList.toggle("collapsed");
+}
 
-});
-
-buttonCancel.addEventListener('click', () => {addKitten.classList.add('collapsed');
+function hideNewCatForm() {
+    addKitten.classList.add("collapsed");
     inputReset.reset();
-});
+}
 
-kittenList.innerHTML = `<li>
-<img scr="./img/${kittenImg1}"  alt="" />            
-<h3>${kittenName1}</h3>
-<h4>${kittenRace1}</h4>
-<p>${kittenDesc1}</p>
-</li>`;
+buttonAdd.addEventListener('click', showNewCatForm);
 
-kittenList.innerHTML += `<li>
-<img scr="./img/${kittenImg2}"  alt="" />            
-<h3>${kittenName2}</h3>
-<h4>${kittenRace2}</h4>
-<p>${kittenDesc2}</p>
-</li>`;
+buttonCancel.addEventListener('click',hideNewCatForm);
 
-kittenList.innerHTML += `<li>
-<img scr="./img/${kittenImg3}"  alt="" />            
-<h3>${kittenName3}</h3>
-<h4>${kittenRace3}</h4>
-<p>${kittenDesc3}</p>
-</li>`;
+
+//EJERCICIO 2.5 INCOMPLETO
+/*function renderKitten(url, desc, name, race) {
+    list.innerHTML =  
+}*/
 
 
 searchButton.addEventListener("click", (ev) => {
@@ -125,3 +103,4 @@ searchButton.addEventListener("click", (ev) => {
         kittenList.innerHTML = msg;
     }
   });
+
