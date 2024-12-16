@@ -53,14 +53,6 @@ const inputSearchDesc = document.querySelector('.js_in_search_desc');
 const msg = 'Uy no encontramos un gato con estas caracterísitcas';
 const buttonSubmit = document.querySelector('.js-button-submit');
 
-/*const kittenDesc1 = 
-'Porte elegante, su patrón de color tan característico y sus ojos de un azul intenso, pero su historia se remonta a Asía al menos hace 500 años, donde tuvo su origen muy posiblemente.';
-
-const kittenDesc2 = 
-'Produce fascinación y curiosidad. Exótico, raro, bello, extraña hasta con pinta de alienígena han llegado a definir a esta raza gatuna que se caracteriza por la «ausencia» de pelo.';
-
-const kittenDesc3 = 
-'Tienen la cabeza cuadrada y los ojos simétricos, por lo que su bella mirada se ha convertido en una de sus señas de identidad. Sus ojos son grandes y las orejas resultan largas y en punta.';*/
 
 //const selectedKitten = document.querySelector('.js-list');
 
@@ -80,11 +72,22 @@ buttonCancel.addEventListener('click',hideNewCatForm);*/
 
 
 //Otra forma de hacer lo del toggle que funciona
+
+const inputImg = document.querySelector('.js-inputImg');
+const inputName = document.querySelector('.js-inputName');
+const inputRace = document.querySelector('.js-inputRace');
+const inputDesc = document.querySelector('.js-inputDesc');
+
 function showNewCatForm() {
     addKitten.classList.remove('collapsed');
 }
-function hideNewCatForm() {
+function cancelCatForm() {
     addKitten.classList.add('collapsed');
+    inputImg.value = "";
+    inputName.value = "";
+    inputRace.value = "";
+    inputDesc.value = "";
+    
 }
 
 function handleClick() {
@@ -93,26 +96,21 @@ function handleClick() {
         showNewCatForm();
 
     } else {
-        hideNewCatForm();
+        cancelCatForm();
     }
 
 }
     
 buttonAdd.addEventListener('click', handleClick);
 
-buttonCancel.addEventListener('click',hideNewCatForm);
+buttonCancel.addEventListener('click', cancelCatForm);
 
-//EJERCICIO 2.5 INCOMPLETO
 
     
 
 function renderKitten(url, desc, name, race) {
 
-    const inputImg = document.querySelector('.js-inputImg').value;
-    const inputName = document.querySelector('.js-inputName').value;
-    const inputRace = document.querySelector('.js-inputRace').value;
-    const inputDesc = document.querySelector('.js-inputDesc').value;
-
+    
     const newKittenAdded = `<li class="card">
     <article>
     <img class="card_img" src="${url}" alt="siames-cat" />
@@ -140,7 +138,8 @@ renderKitten(kittenImg1, kittenDesc1, kittenName1, kittenRace1);
 
 console.log(kittenList);
 
-searchButton.addEventListener("click", (ev) => {
+ 
+const filterKitten = (event) =>{
     ev.preventDefault();
     const descrSearchText = inputSearchDesc.value;
 
@@ -159,5 +158,6 @@ searchButton.addEventListener("click", (ev) => {
     else {
         kittenList.innerHTML = msg;
     }
-  });
+};
 
+searchButton.addEventListener("click", filterKitten);
