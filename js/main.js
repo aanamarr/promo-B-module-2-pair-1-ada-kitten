@@ -1,24 +1,35 @@
 'use strict'
 const kittenList = document.querySelector('.js-list');
 
-const kittenImg1 = 'https://dev.adalab.es/gato-siames.webp';
-const kittenName1 = 'Anastasio';
-const kittenDesc1 = 
-'Porte elegante, su patrón de color tan característico y sus ojos de un azul intenso, pero su historia se remonta a Asía al menos hace 500 años, donde tuvo su origen muy posiblemente.';
-const kittenRace1 = 'Siamés';
+const kittenData1 = {
+    image: 'https://dev.adalab.es/gato-siames.webp',
+    name: 'Anastasio',
+    desc: 'Porte elegante, su patrón de color tan característico y sus ojos de un azul intenso, pero su historia se remonta a Asía al menos hace 500 años, donde tuvo su origen muy posiblemente.',
+    race: 'Siamés',
+};
+
+const kittenData2 = {
+    image: 'https://dev.adalab.es/sphynx-gato.webp',
+    name: 'Fiona',
+    desc: 'Produce fascinación y curiosidad. Exótico, raro, bello, extraño… hasta con pinta de alienígena han llegado a definir a esta raza gatuna que se caracteriza por la «ausencia» de pelo.',
+    race: 'Sphynx',
+};
+
+const kittenData3 = {
+    image: 'https://dev.adalab.es/maine-coon-cat.webp',
+    name: 'Cielo',
+    desc: 'Tienen la cabeza cuadrada y los ojos simétricos, por lo que su bella mirada se ha convertido en una de sus señas de identidad. Sus ojos son grandes y las orejas resultan largas y en punta.',
+    race: '',
+};
+
+const kittenData = {
+    image: '',
+    name: '',
+    desc: '',
+    race: '',
+};
 
 
-const kittenImg2 = 'https://dev.adalab.es/sphynx-gato.webp';
-const kittenName2 = 'Fiona';
-const kittenDesc2 = 
-'Produce fascinación y curiosidad. Exótico, raro, bello, extraño… hasta con pinta de alienígena han llegado a definir a esta raza gatuna que se caracteriza por la «ausencia» de pelo.';
-const kittenRace2 = 'Sphynx';
-
-const kittenImg3 = 'https://dev.adalab.es/maine-coon-cat.webp';
-const kittenName3 = 'Cielo';
-const kittenDesc3 = 
-'Tienen la cabeza cuadrada y los ojos simétricos, por lo que su bella mirada se ha convertido en una de sus señas de identidad. Sus ojos son grandes y las orejas resultan largas y en punta.';
-const kittenRace3 = '';
 /*
 const kittenOne = `<li class="card">
 <article>
@@ -106,34 +117,40 @@ buttonAdd.addEventListener('click', handleClick);
 buttonCancel.addEventListener('click', cancelCatForm);
 
 
-    
-
-function renderKitten(url, desc, name, race) {
-
+function renderKitten(kittenData) {
     
     const newKittenAdded = `<li class="card">
     <article>
-    <img class="card_img" src="${url}" alt="siames-cat" />
-    <h3 class="card_title">${name}</h3>
-    <h4 class="card_race">${race ? race : 'Sin raza'}</h4>
-    <p class="card_description">${desc}</p>
+    <img class="card_img" src="${kittenData.image}" alt="siames-cat" />
+    <h3 class="card_title">${kittenData.name}</h3>
+    <h4 class="card_race">${kittenData.race}</h4>
+    <p class="card_description">${kittenData.desc}</p>
     </article>
     </li>`;
 
     kittenList.innerHTML += newKittenAdded;
     
-}
+};
 
-buttonSubmit.addEventListener('click', renderKitten);
+buttonSubmit.addEventListener('click', () => {
+    kittenData.image = inputImg.value;
+    kittenData.name = inputName.value;
+    kittenData.race = inputRace.value;
+    kittenData.desc = inputDesc.value;
 
-renderKitten('https://cdn.agenciasinc.es/var/ezwebin_site/storage/images/_aliases/img_1col/noticias/el-gato-montes-de-la-peninsula-iberica-en-peligro-de-extincion/10782189-2-esl-MX/El-gato-montes-de-la-peninsula-iberica-en-peligro-de-extincion.jpg',
+    renderKitten(kittenData);
+
+});
+
+
+/*renderKitten('https://cdn.agenciasinc.es/var/ezwebin_site/storage/images/_aliases/img_1col/noticias/el-gato-montes-de-la-peninsula-iberica-en-peligro-de-extincion/10782189-2-esl-MX/El-gato-montes-de-la-peninsula-iberica-en-peligro-de-extincion.jpg',
 'Come chocolate y turrón y bolitas de anís. Duerme cerca del radiador con la almohada en los pies, y sueña que es un gran campeón, jugando al ajedrez.',
 'Susanita',
-'Montesa');
+'Montesa');*/
 
-renderKitten(kittenImg3, kittenDesc3, kittenName3, kittenRace3);
-renderKitten(kittenImg2, kittenDesc2, kittenName2, kittenRace2);
-renderKitten(kittenImg1, kittenDesc1, kittenName1, kittenRace1);
+renderKitten(kittenData1);
+renderKitten(kittenData2);
+renderKitten(kittenData3);
 
 
 console.log(kittenList);
