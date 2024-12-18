@@ -1,26 +1,25 @@
 'use strict'
 const kittenList = document.querySelector('.js-list');
-
-const kittenData1 = {
-    image: 'https://dev.adalab.es/gato-siames.webp',
-    name: 'Anastasio',
-    desc: 'Porte elegante, su patrón de color tan característico y sus ojos de un azul intenso, pero su historia se remonta a Asía al menos hace 500 años, donde tuvo su origen muy posiblemente.',
-    race: 'Siamés',
-};
-
-const kittenData2 = {
-    image: 'https://dev.adalab.es/sphynx-gato.webp',
-    name: 'Fiona',
-    desc: 'Produce fascinación y curiosidad. Exótico, raro, bello, extraño… hasta con pinta de alienígena han llegado a definir a esta raza gatuna que se caracteriza por la «ausencia» de pelo.',
-    race: 'Sphynx',
-};
-
-const kittenData3 = {
-    image: 'https://dev.adalab.es/maine-coon-cat.webp',
-    name: 'Cielo',
-    desc: 'Tienen la cabeza cuadrada y los ojos simétricos, por lo que su bella mirada se ha convertido en una de sus señas de identidad. Sus ojos son grandes y las orejas resultan largas y en punta.',
-    race: '',
-};
+const kittenDataList = [ //Una lista de 3 objetos con la información de cada gatito
+    {
+        image: 'https://dev.adalab.es/gato-siames.webp',
+        name: 'Anastasio',
+        desc: 'Porte elegante, su patrón de color tan característico y sus ojos de un azul intenso, pero su historia se remonta a Asía al menos hace 500 años, donde tuvo su origen muy posiblemente.',
+        race: 'Siamés',
+    },
+    {
+        image: 'https://dev.adalab.es/sphynx-gato.webp',
+        name: 'Fiona',
+        desc: 'Produce fascinación y curiosidad. Exótico, raro, bello, extraño… hasta con pinta de alienígena han llegado a definir a esta raza gatuna que se caracteriza por la «ausencia» de pelo.',
+        race: 'Sphynx',
+    },
+    {
+        image: 'https://dev.adalab.es/maine-coon-cat.webp',
+        name: 'Cielo',
+        desc: 'Tienen la cabeza cuadrada y los ojos simétricos, por lo que su bella mirada se ha convertido en una de sus señas de identidad. Sus ojos son grandes y las orejas resultan largas y en punta.',
+        race: '',
+    },
+]
 
 const kittenData = {
     image: '',
@@ -117,7 +116,7 @@ buttonAdd.addEventListener('click', handleClick);
 buttonCancel.addEventListener('click', cancelCatForm);
 
 
-function renderKitten(kittenData) {
+function renderKitten(kittenData) { //Esta función me marca que información quiero guardar (lo que quieres pintar en html)
     
     const newKittenAdded = `<li class="card">
     <article>
@@ -127,30 +126,23 @@ function renderKitten(kittenData) {
     <p class="card_description">${kittenData.desc}</p>
     </article>
     </li>`;
-
-    kittenList.innerHTML += newKittenAdded;
+    return newKittenAdded;//guardar la información del newKittenAdded para usarla en un momento dado. 
     
 };
 
-buttonSubmit.addEventListener('click', () => {
+buttonSubmit.addEventListener('click', (event) => {
+    event.preventDefault()
     kittenData.image = inputImg.value;
     kittenData.name = inputName.value;
     kittenData.race = inputRace.value;
     kittenData.desc = inputDesc.value;
-
-    renderKitten(kittenData);
+   
+    kittenList.innerHTML += renderKitten(kittenData);//este se ejecuta cuando se pincha en el boton submit, se crea un nuevo Li con los nuevos datos añadidos por la usuaria
 
 });
 
-
-/*renderKitten('https://cdn.agenciasinc.es/var/ezwebin_site/storage/images/_aliases/img_1col/noticias/el-gato-montes-de-la-peninsula-iberica-en-peligro-de-extincion/10782189-2-esl-MX/El-gato-montes-de-la-peninsula-iberica-en-peligro-de-extincion.jpg',
-'Come chocolate y turrón y bolitas de anís. Duerme cerca del radiador con la almohada en los pies, y sueña que es un gran campeón, jugando al ajedrez.',
-'Susanita',
-'Montesa');*/
-
-renderKitten(kittenData1);
-renderKitten(kittenData2);
-renderKitten(kittenData3);
+kittenList.innerHTML = //Se ejecuta cuando se carga la pág
+renderKitten(kittenDataList[0]) + renderKitten(kittenDataList[1]) + renderKitten(kittenDataList[2]);
 
 
 console.log(kittenList);
