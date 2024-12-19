@@ -141,12 +141,28 @@ buttonSubmit.addEventListener('click', (event) => {
 
 });
 
-kittenList.innerHTML = //Se ejecuta cuando se carga la pág
-renderKitten(kittenDataList[0]) + renderKitten(kittenDataList[1]) + renderKitten(kittenDataList[2]);
+//kittenList.innerHTML = //Se ejecuta cuando se carga la pág
+
+//function renderKittenList (kittenDataList) {
+/*for (const oneCat of kittenDataList) {
+    kittenList.innerHTML += renderKitten(oneCat);
+        
+};*/
+
+function renderKittenList (kittenDataList) {
+    
+for (let i = 0; i < kittenDataList.length; i++) {
+    
+    kittenList.innerHTML += renderKitten(kittenDataList[i]);
+}
+};
+renderKittenList(kittenDataList);
+
+/*renderKitten(kittenDataList[0]) + renderKitten(kittenDataList[1]) + renderKitten(kittenDataList[2]);
 
 
-console.log(kittenList);
-
+console.log(kittenList);*/
+/*
  
 const filterKitten = (event) =>{
     ev.preventDefault();
@@ -169,4 +185,22 @@ const filterKitten = (event) =>{
     }
 };
 
-searchButton.addEventListener("click", filterKitten);
+searchButton.addEventListener("click", filterKitten);  */
+
+
+
+function filterKitten(event) {
+    event.preventDefault();
+    const descrSearchText = inputSearchDesc.value;
+    kittenList.innerHTML = '';
+    for (const kittenItem of kittenDataList) {
+        if (kittenDataList.includes(descrSearchText)) {
+            kittenList.innerHTML = renderKitten(kittenItem);
+        }
+        
+      //Completa el código
+      //Comprueba si cada gatito contiene la descripción
+      //Si la contiene pintamos un gatito
+      //utilizando la función renderKitten(kittenItem)
+    }
+  } 
